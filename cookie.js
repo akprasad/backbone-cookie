@@ -18,7 +18,7 @@
         },
 
         isEmpty: function() {
-            return (_.size(this.attributes) > 1); // ignore 'id'
+            return (_.size(this.attributes) <= 1); // just 'id'
         }
     });
 }(namespace = window || {}));

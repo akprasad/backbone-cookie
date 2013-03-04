@@ -18,8 +18,10 @@ test('Create', function() {
     $.removeCookie(COOKIE);
     var c = newCookie();
     equal($.removeCookie(COOKIE), false, 'unsaved cookie does not exist');
+    ok(c.isEmpty(), 'unsaved empty cookie is empty');
     c.save()
     ok($.removeCookie(COOKIE), 'saved cookie exists');
+    ok(c.isEmpty(), 'saved empty cookie is empty');
 });
 
 test('Read', function() {
@@ -29,6 +31,7 @@ test('Read', function() {
     var d = newCookie();
     equal(d.get('id'), COOKIE, 'read id');
     equal(d.get('data'), DATA, 'read data');
+    ok(!c.isEmpty(), 'saved cookie is not empty');
     c.set('data', 'foo');
     c.fetch();
     equal(newCookie().get('data'), DATA, 'read fetched data');
